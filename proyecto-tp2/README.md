@@ -9,6 +9,10 @@ La carpeta proyecto-tp2 contiene:
 tp_n_2_proyecto1.ino: Código Arduino del trabajo práctico.
 Circuito.png: Captura del esquema del circuito.
 README.md: Este archivo con la información del trabajo.
+
+
+
+
 📝 Consigna
 usando el ejercicio del TP1 como base:
 Desarrollar un sistema con , controlando el tiempo entre los cambios de colores mediante una resistencia variable (potenciómetro) que valla desde 0s(aprox) min a 3s(aprox) max, y el encendido/apagado de los LEDs con un pulsador (en funcionalidad boton) que puede detener y recomenzar la secuencia en cualquier momento,  un buzzer que emitirá un sonido cuando cambien los colores (junto a la secuencia de parpadeo).
