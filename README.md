@@ -1,7 +1,7 @@
 # Proyecto-1_Ariadna-Perreault
 Proyecto informatico 1 - Perreault Ariadna
 
-Alumno: Montiel Benjamín Correo: ariadna.perreaultdamianich@gmail.com Curso y división: 4°1 Año - Computacion Docente: Gonzalo Consorti Materia: Proyecto informatico 1
+Alumno: Ariadna Perreault Correo: ariadna.perreaultdamianich@gmail.com Curso y división: 4°1 Año - Computacion Docente: Gonzalo Consorti Materia: Proyecto informatico 1
 
 📁 Organización del repositorio
 
