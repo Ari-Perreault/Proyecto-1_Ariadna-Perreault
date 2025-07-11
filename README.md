@@ -5,9 +5,54 @@ Alumno: Ariadna Perreault Correo: ariadna.perreaultdamianich@gmail.com Curso y d
 
 📁 Organización del repositorio
 
-Este repositorio contiene los trabajos prácticos de la materia.  
-Cada trabajo se entrega en una nueva rama, con una carpeta del mismo nombre que contiene el código `.ino`, la imagen del circuito y un `README.md` con detalles del TP.
+Consigna: Debes crear un sistema de monitoreo y visualización que esta compuesto por los siguientes componenetes y su funcionalidad:
 
-- Rama `main`: contiene este README principal.
-- Rama `proyecto-tp1`: contiene la entrega del primer trabajo práctico.
-- Rama `Guia_1`: contiene los ejercicos de la guia.
+1)Comportamiento del Anillo de NeoPixel (12 LEDs):El anillo de 12 LEDs debe comenzar todo en verde cuando la distancia es mínima y se va apagando progresivamente conforme la distancia aumenta. El color de los LEDs debe cambiar de verde a rojo, apagándose gradualmente, a medida que el sensor detecta una mayor distancia.
+
+: El anillo completo se ilumina en verde.
+: El anillo se va apagando gradualmente, y el color cambia de verde a amarillo y luego a rojo.
+: El anillo parpadea, con todos los LEDs en rojo.
+
+: La transición de color debe ser gradual, y los LEDs se deben apagar o cambiar de color de manera progresiva conforme la distancia aumenta.
+
+Incremento de LEDs:
+Como el sensor de distancia se usa para medir la proximidad, más LEDs deben transicionar de color conforme la distancia medida aumenta o disminuye. Los LEDs deben seguir una transición de colores de verde a amarillo y luego a rojo según la distancia.
+
+
+Desde 0 hasta 300cm: Los LEDs deben iluminarse/apagarse de forma progresiva y cambiar de verde a medida que la distancia disminuye. (pixeles 0 al 4) (verde)
+De 300 a 800cm: Los LEDs deben iluminarse/apagarse de forma progresiva y cambiar de verde a amarillo (pixeles 5 a 8).(amarillo)
+De 800 a  999cm: Los LEDs deben iluminarse/apagarse de forma progresiva y cambiar  de amarillo a rojo (pixeles 6 a 11)(amarillo)
+En 1000 o si no se detecta distancia:  El anillo parpadea, con todos los LEDs en rojo.(rojo)
+
+2)Lectura del Sensor de distancia y Monitor Serial:
+
+El sensor de distancia medirá la distancia hasta un máximo de 1000. Los valores de distancia se deben ajustar para que el sistema reaccione de manera adecuada con los LEDs y el buzzer, siguiendo la siguiente lógica:
+
+De 0 a 1000cm: Los valores de distancia deben ajustarse para obtener una salida adecuada en los LEDs y el buzzer, de modo que los LEDs y el buzzer se comporten de acuerdo a la proximidad del objeto (con una transición progresiva desde verde a rojo, y pitidos que aumentan en frecuencia conforme la distancia disminuye).
+
+Nota: El sensor debe ser capaz de proporcionar lecturas precisas, y el código debe ajustarse para interpretar estas lecturas de manera proporcional a la distancia real ( hasta 300cm).
+Debes realizar pruebas de lectura del sensor mediante el Monitor Serial, mostrando en la consola los valores que recibe el Arduino.
+mostrar la distancia leída y las escaladas.
+Deshabilitar la parte del código para pruebas de sensores luego de realizar las pruebas de valores.
+Se debe poder activar y desactivar bloques de código con variables de definición
+
+3)Comportamiento del Buzzer: El buzzer debe emitir pitidos
+
+El buzzer debe emitir pitidos que varían en función de la distancia detectada por el sensor de distancia. La velocidad de los pitidos debe ajustarse según la proximidad al objeto.
+
+Verde (0-300cm): No debe sonar el buzzer.
+Amarillo (300-500 cm): El buzzer debe emitir pitidos lentos (cada 500 ms).
+Amarillo (500-800 cm): El buzzer emite pitidos más rápidos (cada 50 ms).
+Rojo (800-1000 cm): El buzzer debe emitir pitidos continuos (cada 10-20 ms).
+
+Nota: Los pitidos deben volverse más rápidos conforme la distancia se acerca al valor máximo, para indicar una proximidad creciente.
+4)Pantalla LCD debe mostrar: 
+
+La pantalla LCD debe mostrar lo siguiente:
+La distancia escalada medida por el sensor, en centímetros.
+Un mensaje de advertencia que indica si el objeto está demasiado cerca o demasiado lejos: Si la distancia es menor a 300 cm: "¡Distancia Optima!"
+Si la distancia es mayor a 800 cm: "¡Demasiado lejos!"
+El estado del sistema: Si el sistema está encendido o apagado, dependiendo de la posición del botón de encendido/apagado.
+5) PushButton con funcion de boton: Un PushButton debe usarse para encender y apagar el sistema completo. Al presionar el botón (una sola vez), el sistema debe activarse o desactivarse por completo.
+Cuando el sistema está apagado: Todos los LEDs deben estar apagados, el buzzer debe estar inactivo y la pantalla LCD debe mostrar "Sistema Apagado".
+Cuando el sistema está encendido: Los LEDs, el buzzer y la pantalla LCD deben funcionar normalmente, y deben responder a los cambios de distancia del sensor.
