@@ -1,0 +1,97 @@
+#define LED_R 9
+#define LED_G 10
+#define LED_B 8
+#define BUZZ 4
+#define BOTON 2
+#define TRIG 6
+#define ECHO 5
+
+bool boo = HIGH;
+
+void setup ()
+{
+  Serial.begin (9600);
+  pinMode( LED_R , OUTPUT);
+  pinMode( LED_G , OUTPUT);
+  pinMode( LED_B , OUTPUT);
+  pinMode( BUZZ  , OUTPUT);
+  pinMode( TRIG  , OUTPUT);
+  pinMode( ECHO  , INPUT); 
+  pinMode( BOTON   , INPUT_PULLUP);
+ }
+
+void loop()
+{
+  bool boton = digitalRead(BOTON);
+
+
+  if(boton == LOW){
+    boo = !boo;
+    delay (100);
+  }
+
+  if(boo) {
+    Serial.println("desactivado");
+  }
+  else {
+    Serial.println("activado");
+  }
+
+  digitalWrite( TRIG, LOW);
+  delayMicroseconds(2);
+  digitalWrite( TRIG, HIGH);
+  delayMicroseconds(10);
+  digitalWrite( TRIG, LOW);
+ 
+  float tiempo = pulseIn( ECHO , HIGH );
+  float distancia = tiempo / 57.6;
+  { 
+  Serial.print("  Distancia actual del objeto:");
+  Serial.print(distancia) ;
+  Serial.println("cm");
+}
+  if (boo){
+    digitalWrite(LED_B , HIGH);
+  }else {
+    if (distancia > 150){
+     digitalWrite(LED_B , LOW);
+     digitalWrite(LED_G , HIGH);
+     digitalWrite(LED_R , LOW);
+     digitalWrite(BUZZ , LOW);
+  }
+   else if (distancia > 50)
+   {
+     digitalWrite(LED_B , LOW);
+     analogWrite(LED_G , 100);
+     digitalWrite(LED_R , HIGH);
+     digitalWrite(BUZZ , HIGH);
+     delay(500);
+     digitalWrite(BUZZ , LOW);
+     delay(500);
+   }
+    else 
+    {
+     digitalWrite(LED_B , LOW);
+     digitalWrite(LED_G , LOW);
+     digitalWrite(LED_R , HIGH);
+     digitalWrite(BUZZ , HIGH);
+     delay(50);
+     digitalWrite(BUZZ , LOW);
+     delay(50);
+    }
+  }
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+}
+federricoploto — 22:42
